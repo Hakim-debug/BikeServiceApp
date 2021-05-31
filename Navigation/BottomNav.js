@@ -4,7 +4,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import LoginScreen from './LoginScreen';
 
-// import Profil from './ProfilScreen';
+import ProfileScreen from '../Screens/ProfileScreen';
 // import BikeStore from './BikeStore';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TouchableOpacity } from 'react-native';
@@ -95,7 +95,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfilScreen}
+        component={ProfileScreen}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ color }) => (

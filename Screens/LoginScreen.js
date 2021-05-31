@@ -11,6 +11,7 @@ import {
 import { useEffect } from 'react';
 import FormInput from '../Components/FormInput';
 import FormButton from '../Components/FormButton';
+import SocialButton from '../Components/SocialButtom';
 
 import { auth } from '../firebase';
 
@@ -19,7 +20,7 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      // console.log(authUser);
+      console.log(authUser);
       if (authUser) {
         //if you logout this will replace the homescreen
         navigation.replace('Home');
@@ -74,7 +75,7 @@ const LoginScreen = ({ navigation }) => {
       <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
         <Text style={styles.navButtonText}>Forgot Password?</Text>
       </TouchableOpacity>
-      {/*
+
       {Platform.OS === 'android' ? (
         <View>
           <SocialButton
@@ -93,7 +94,7 @@ const LoginScreen = ({ navigation }) => {
             onPress={() => googleLogin()}
           />
         </View>
-      ) : null} */}
+      ) : null}
 
       <TouchableOpacity
         style={styles.forgotButton}

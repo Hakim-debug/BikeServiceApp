@@ -8,8 +8,13 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
+import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import firestore from '../firebase';
+import BottomNav from '../Navigation/BottomNav';
+import { auth, db } from '../firebase';
+import ListItems from '../Components/ListItems';
 
 const ProfilScreen = ({ navigation, route }) => {
   // const { user, logout } = useContext(AuthContext);
@@ -19,67 +24,67 @@ const ProfilScreen = ({ navigation, route }) => {
   const [deleted, setDeleted] = useState(false);
   const [userData, setUserData] = useState(null);
 
-  const fetchPosts = async () => {
-    try {
-      const list = [];
+  // const fetchPosts = async () => {
+  //   try {
+  //     const list = [];
 
-      await firestore()
-        .collection('posts')
-        .where('userId', '==', route.params ? route.params.userId : user.uid)
-        .orderBy('postTime', 'desc')
-        .get()
-        .then((querySnapshot) => {
-          // console.log('Total Posts: ', querySnapshot.size);
+  //     await firestore()
+  //       .collection('posts')
+  //       .where('userId', '==', route.params ? route.params.userId : user.uid)
+  //       .orderBy('postTime', 'desc')
+  //       .get()
+  //       .then((querySnapshot) => {
+  //         // console.log('Total Posts: ', querySnapshot.size);
 
-          querySnapshot.forEach((doc) => {
-            const { userId, post, postImg, postTime, likes, comments } =
-              doc.data();
-            list.push({
-              id: doc.id,
-              userId,
-              userName: 'Test Name',
-              userImg:
-                'https://freepngimg.com/thumb/mario/20698-7-mario-transparent-background.png',
-              postTime: postTime,
-              post,
-              postImg,
-              liked: false,
-              likes,
-              comments,
-            });
-          });
-        });
+  //         querySnapshot.forEach((doc) => {
+  //           const { userId, post, postImg, postTime, likes, comments } =
+  //             doc.data();
+  //           list.push({
+  //             id: doc.id,
+  //             userId,
+  //             userName: 'Test Name',
+  //             userImg:
+  //               'https://freepngimg.com/thumb/mario/20698-7-mario-transparent-background.png',
+  //             postTime: postTime,
+  //             post,
+  //             postImg,
+  //             liked: false,
+  //             likes,
+  //             comments,
+  //           });
+  //         });
+  //       });
 
-      setPosts(list);
+  //     setPosts(list);
 
-      if (loading) {
-        setLoading(false);
-      }
+  //     if (loading) {
+  //       setLoading(false);
+  //     }
 
-      console.log('Posts: ', posts);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  //     console.log('Posts: ', posts);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
-  const getUser = async () => {
-    await firestore()
-      .collection('users')
-      .doc(route.params ? route.params.userId : user.uid)
-      .get()
-      .then((documentSnapshot) => {
-        if (documentSnapshot.exists) {
-          console.log('User Data', documentSnapshot.data());
-          setUserData(documentSnapshot.data());
-        }
-      });
-  };
+  // const getUser = async () => {
+  //   await firestore()
+  //     .collection('users')
+  //     .doc(route.params ? route.params.userId : user.uid)
+  //     .get()
+  //     .then((documentSnapshot) => {
+  //       if (documentSnapshot.exists) {
+  //         console.log('User Data', documentSnapshot.data());
+  //         setUserData(documentSnapshot.data());
+  //       }
+  //     });
+  // };
 
-  useEffect(() => {
-    getUser();
-    fetchPosts();
-    navigation.addListener('focus', () => setLoading(!loading));
-  }, [navigation, loading]);
+  // useEffect(() => {
+  //   getUser();
+  //   fetchPosts();
+  //   navigation.addListener('focus', () => setLoading(!loading));
+  // }, [navigation, loading]);
 
   const handleDelete = () => {};
 
@@ -102,9 +107,10 @@ const ProfilScreen = ({ navigation, route }) => {
               : 'https://assets.webiconspng.com/uploads/2017/09/Simpsons-PNG-Image-55525-300x300.png',
           }}
         />
+
         <Text style={styles.userName}>
-          {userData ? userData.fname || 'Test' : 'Test'}{' '}
-          {userData ? userData.lname || 'User' : 'User'}
+          {userData ? userData.name || 'Test' : 'Test'}{' '}
+          {userData ? userData.name || 'User' : 'User'}
         </Text>
         {/* <Text>{route.params ? route.params.userId : user.uid}</Text> */}
         <Text style={styles.aboutUser}>

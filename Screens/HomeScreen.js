@@ -11,11 +11,13 @@ import { SafeAreaView, TouchableOpacity } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import { auth } from '../firebase';
 import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
-// import ProfilScreen from './ProfilScreen';
-// import Mapscreen from './MapScreen';
+
 import RegisterScreen from './RegisterScreen';
 import Mapscreen from './MapScreen';
 import ProfilScreen from './ProfileScreen';
+import ChatHomeScreen from './ChatHomeScreen';
+import BookServiceScreen from './BookServiceScreen';
+
 const Tab = createMaterialBottomTabNavigator();
 
 function MyTabs() {
@@ -28,7 +30,7 @@ function MyTabs() {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Profile',
+      title: '',
       headerStyle: { backgroundColor: '#ffff' },
       headerTitleStyle: { color: 'black' },
       headerTintColor: 'black',
@@ -84,10 +86,20 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="Register"
-        component={RegisterScreen}
+        name="ChatHome"
+        component={ChatHomeScreen}
         options={{
-          tabBarLabel: 'Updates',
+          tabBarLabel: 'chats',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="wechat" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Book"
+        component={BookServiceScreen}
+        options={{
+          tabBarLabel: 'Book',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="bell" color={color} size={26} />
           ),

@@ -9,6 +9,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import Mapscreen from './Screens/MapScreen';
 import ProfilScreen from './Screens/ProfileScreen';
 import { BottomNavigation } from 'react-native-paper';
+import AddChatScreen from './Screens/AddChatScreen';
+import ChatScreen from './Screens/ChatScreen';
+import ChatHomeScreen from './Screens/ChatHomeScreen';
+import BottomNav from './Navigation/BottomNav';
+import BookServiceScreen from './Screens/BookServiceScreen';
 
 //Header color of all Screens
 const globalScreenOptions = {
@@ -27,10 +32,12 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Map" component={Mapscreen} />
         <Stack.Screen name="Profile" component={ProfilScreen} />
-        <Stack.Screen name="Nav" component={BottomNavigation} />
+        <Stack.Screen name="Nav" component={BottomNav} />
+        <Stack.Screen name="ChatHome" component={ChatHomeScreen} />
+        <Stack.Screen name="Book" component={BookServiceScreen} />
 
-        {/* <Stack.Screen name="AddChat" component={AddChatScreen} />
-        <Stack.Screen name="Chat" component={ChatScreen} /> */}
+        <Stack.Screen name="AddChat" component={AddChatScreen} />
+        <Stack.Screen name="Chat" component={ChatScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

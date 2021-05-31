@@ -26,23 +26,6 @@ export default class Mapscreen extends React.Component {
     this.state.region.setValue(region);
   }
 
-  render() {
-    return (
-      <Animated
-        region={this.state.region}
-        onRegionChange={this.onRegionChange}
-      />
-    );
-  }
-  getInitialState() {
-    return {
-      coordinate: new AnimatedRegion({
-        latitude: LATITUDE,
-        longitude: LONGITUDE,
-      }),
-    };
-  }
-
   componentWillReceiveProps(nextProps) {
     const duration = 500;
 
@@ -129,6 +112,7 @@ export default class Mapscreen extends React.Component {
         <TouchableOpacity onPress={this.takeSnapshot}>
           Take Snapshot
         </TouchableOpacity>
+        <BottomNav />
       </View>
     );
   }
