@@ -86,7 +86,7 @@ const ChatScreen = ({ navigation, route }) => {
     Keyboard.dismiss();
 
     db.collection('chat').doc(route.params.id).collection('message').add({
-      timestap: firebase.firestore.FieldValue.serverTimestamp(),
+      serverTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
       message: input,
       displayName: auth.currentUser.displayName,
       email: auth.currentUser.email,

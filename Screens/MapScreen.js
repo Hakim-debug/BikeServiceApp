@@ -43,12 +43,6 @@ export default class Mapscreen extends React.Component {
           .start();
       }
     }
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI-eLPBzure5sKkcTLSpYKE6HTgvdax9k&callback=initMap"
-      type="text/javascript"
-    ></script>;
   }
 
   render() {
@@ -112,7 +106,6 @@ export default class Mapscreen extends React.Component {
         <TouchableOpacity onPress={this.takeSnapshot}>
           Take Snapshot
         </TouchableOpacity>
-        <BottomNav />
       </View>
     );
   }
@@ -133,5 +126,11 @@ export default class Mapscreen extends React.Component {
     );
   }
 }
+<script
+  async
+  defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI-eLPBzure5sKkcTLSpYKE6HTgvdax9k&callback=initMap"
+  type="text/javascript"
+></script>;
 
 const styles = StyleSheet.create({});

@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { db } from '../firebase';
+import * as firebase from 'firebase';
 
 const AddChatScreen = ({ navigation }) => {
   const [input, setInput] = useState('');
@@ -21,7 +22,7 @@ const AddChatScreen = ({ navigation }) => {
         chatName: input,
       })
       .then(() => {
-        navigation.goBack();
+        navigation.navigate('ChatHome');
       })
       .catch((error) => alert(error));
   };

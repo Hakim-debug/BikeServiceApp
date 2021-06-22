@@ -10,11 +10,13 @@ import {
 } from 'react-native';
 import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { Avatar } from 'react-native-elements';
 
 import firestore from '../firebase';
 import BottomNav from '../Navigation/BottomNav';
-import { auth, db } from '../firebase';
+
 import ListItems from '../Components/ListItems';
+import { auth, db } from '../firebase';
 
 const ProfilScreen = ({ navigation, route }) => {
   // const { user, logout } = useContext(AuthContext);
@@ -23,6 +25,7 @@ const ProfilScreen = ({ navigation, route }) => {
   const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
 
   // const fetchPosts = async () => {
   //   try {
@@ -98,14 +101,15 @@ const ProfilScreen = ({ navigation, route }) => {
         }}
         showsVerticalScrollIndicator={false}
       >
-        <Image
+        <ListItems
           style={styles.userImg}
-          source={{
-            uri: userData
-              ? userData.userImg ||
-                'https://assets.webiconspng.com/uploads/2017/09/Simpsons-PNG-Image-55525-300x300.png'
-              : 'https://assets.webiconspng.com/uploads/2017/09/Simpsons-PNG-Image-55525-300x300.png',
-          }}
+          source={{ uri: auth?.currentUser?.photoURL.name }}
+          // source={{
+          //   uri: userData
+          //     ? userData.userImg ||
+          //       'https://assets.webiconspng.com/uploads/2017/09/Simpsons-PNG-Image-55525-300x300.png'
+          //     : 'https://assets.webiconspng.com/uploads/2017/09/Simpsons-PNG-Image-55525-300x300.png',
+          // }}
         />
 
         <Text style={styles.userName}>

@@ -17,6 +17,8 @@ import Mapscreen from './MapScreen';
 import ProfilScreen from './ProfileScreen';
 import ChatHomeScreen from './ChatHomeScreen';
 import BookServiceScreen from './BookServiceScreen';
+import ChatScreen from './ChatScreen';
+import AddChatScreen from './AddChatScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -53,7 +55,7 @@ function MyTabs() {
             padding: 10,
           }}
         >
-          {/* Camrera,write */}
+          {/* Camrera*/}
           <TouchableOpacity activeOpacity={0.5}>
             <AntDesign name="camerao" size={20} color="black" />
           </TouchableOpacity>
@@ -63,7 +65,7 @@ function MyTabs() {
             onPress={() => navigation.navigate('Map')}
             activeOpacity={0.5}
           >
-            <SimpleLineIcons name="map" size={20} color="purple" />
+            <SimpleLineIcons name="pencil" size={20} color="black" />
           </TouchableOpacity>
         </View>
       ),
@@ -86,8 +88,8 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="ChatHome"
-        component={ChatHomeScreen}
+        name="AddChat"
+        component={AddChatScreen}
         options={{
           tabBarLabel: 'chats',
           tabBarIcon: ({ color }) => (

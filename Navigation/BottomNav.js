@@ -61,7 +61,7 @@ function MyTabs() {
             onPress={() => navigation.navigate('Map')}
             activeOpacity={0.5}
           >
-            <SimpleLineIcons name="map" size={20} color="purple" />
+            <SimpleLineIcons name="pencil" size={20} color="purple" />
           </TouchableOpacity>
         </View>
       ),
@@ -79,7 +79,7 @@ function MyTabs() {
         options={{
           tabBarLabel: 'Maps',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
+            <MaterialCommunityIcons name="Map" color={color} size={26} />
           ),
         }}
       />

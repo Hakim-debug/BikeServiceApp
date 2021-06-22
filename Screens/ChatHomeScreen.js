@@ -40,7 +40,7 @@ const ChatHomeScreen = () => {
   }, []);
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'ChatHome',
+      title: 'Enkrypted Chat',
       headerStyle: { backgroundColor: '#ffff' },
       headerTitleStyle: { color: 'black' },
       headerTintColor: 'black',
@@ -71,10 +71,9 @@ const ChatHomeScreen = () => {
           {/* Navigates to add chat screen */}
           <TouchableOpacity
             onPress={() => navigation.navigate('AddChat')}
+            title="AddChat"
             activeOpacity={0.5}
-          >
-            <SimpleLineIcons name="pencil" size={24} color="black" />
-          </TouchableOpacity>
+          ></TouchableOpacity>
         </View>
       ),
     });
